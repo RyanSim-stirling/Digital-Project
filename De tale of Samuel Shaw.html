@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SIM URBAN MYTHS trial</title>
+  <style>
+
+#videoPlayPauseBtn {  background-color: black;  color: red;  font-size: 30px;  font-family: 'Chiller', serif; border: 2px solid red;  padding: 10px 30px;  border-radius: 8px;
+  cursor: pointer;  transition: all 0.3s ease;  box-shadow: 0 0 10px red;  position: absolute;  bottom: 15px;  left: 50%;  transform: translateX(-50%); }
+
+#videoPlayPauseBtn:hover {  background-color: red;  color: black;  box-shadow: 0 0 15px red; transform: translateX(-50%) scale(1.05); }
+
+@font-face {  font-family: 'Bloody';  src: url('FONTS/BLOODY.TTF') format('truetype');  font-weight: normal;  font-style: normal; }
+
+@font-face {  font-family: 'Castellar';  src: url('FONTS/CASTELAR.TTF') format('truetype');  font-weight: normal;  font-style: normal; }
+
+@font-face {  font-family: 'Comic Sans MS';  src: url('FONTS/COMIC.TTF') format('truetype');  font-weight: normal;  font-style: normal; }
+
+@font-face {  font-family: 'Chiller';  src: url('FONTS/CHILLER.TTF') format('truetype');  font-weight: normal;  font-style: normal; }
+
+.story-layout {  display: block; /* mobile default */}
+
+@media (min-width: 1024px) {
+  .story-layout {  display: grid;    grid-template-columns: 1.4fr 1fr;    gap: 60px;    max-width: 1200px;
+    margin: 100px auto;    align-items: center; /* center both columns vertically */  }
+
+  .proof-section {    margin-top: 0 !important;  }
+}
+
+/* === FOG EFFECT === */
+.fog-container {  position: fixed;  top: 0;  left: 0;  width: 100%; height: 100%; z-index: 1; pointer-events: none; overflow: hidden; }
+
+.fog-layer {  position: absolute;  width: 200%;  height: 100%;  background-repeat: repeat;  background-size: cover;  opacity: 0.20;  animation: moveFog 90s linear infinite; }
+
+.fog-layer1 {  background-image: url("image sources/Fog1.png"); animation-delay: 0s; }
+
+.fog-layer2 {  background-image: url('image sources/Fog1.png'); animation-delay: 10s;  opacity: 0.10; }
+
+@keyframes moveFog {  0% { transform: translateX(0); }  100% { transform: translateX(-50%); } }
+
+/* === FOG EFFECT === */
+
+    body {  background-color: black; text-align: center;  margin: 0;   padding: 0;   height: 100%; }
+
+    h3 {  font-size: 24px; color: white;  font-family: 'Castellar';  margin: 0; }
+
+    h1 {  font-size: 120px;  color: red; font-family: "Bloody"; opacity: 0; animation: fadeIn 3s ease 0s 1 normal forwards, flicker 0.3s linear 3s 6 normal forwards;  margin-top: 20px;  }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes flicker {  0%, 20%, 40%, 100% { opacity: 1; }  10%, 30% { opacity: 0; }
+    }
+
+    h2 {  font-family: 'Chiller'; font-size: 50px; text-align: center; color: red; opacity: 0; animation: fadeIn 3s ease 0s 1 normal forwards; margin-top: -25px; }
+
+    .parallax-container {  position: absolute; top: 0;  left: 0;  width: 100%;  height: auto;  z-index: 0;pointer-events: none;  overflow: visible; }
+
+    .parallax-container img#parallax-img {  position: absolute;  top: -50px;   left: 50%;  transform: translate3d(-50%, 0, 0);  width: 100%;  height: auto;  will-change: transform;
+    z-index: 0;
+    pointer-events: none;
+    }
+
+    .parent {  display: grid;  grid-template-columns: 1fr; grid-template-rows: repeat(5, 1fr); grid-column-gap: 0px; grid-row-gap: 0px;  align-content: center; }
+
+    .story-text {
+  font-family: 'Castellar';
+  font-size: 17px;
+  color: #eee;
+
+  max-width: 650px;          /* blog-style readable width */
+  margin: 80px auto;         /* centers the block */
+  padding: 0 20px;
+
+  line-height: 1.8;          /* BIG readability upgrade */
+  text-align: left;          /* critical for articles */
+}
+
+.story-text p {
+  margin-bottom: 26px;       /* paragraph breathing room */
+}
+
+    .header-content { text-align: center;  margin-top: 220px;  opacity: 0;  animation: fadeIn 3s ease 0s 1 normal forwards;  z-index: 2;  position: relative; }
+
+    .welcome-text {  font-family: Castellar, serif; font-size: 50px; color: white; margin: 0; }
+
+    .project-credit {  font-family: Castellar, serif; font-size: 16px;  color: white;   margin: 0; letter-spacing: 1px; }
+
+    @media (max-width: 768px) {
+    .parallax-container {  height: 30vh; }
+
+    .parallax-container img#parallax-img { width: 200%;  }
+    }
+
+</style>
+
+  <script> <!-- PARALLAX EFFECT FOR IMAGE BRODER--!>
+    window.addEventListener('DOMContentLoaded', function () {
+      const img = document.getElementById('parallax-img');
+      if (!img) return;
+      const container = img.parentElement;
+      let ticking = false;
+
+      function updateParallax() {
+        const speed = 0.35;
+        if (window.innerWidth < 768) {
+          img.style.transform = 'translate3d(-50%, 0, 0)';
+          return;
+        }
+
+        const containerTop = container.getBoundingClientRect().top + window.pageYOffset;
+        const scrolled = window.pageYOffset;
+        const offset = (scrolled - containerTop) * speed;
+
+        img.style.transform = 'translate3d(-50%,' + offset + 'px, 0)';
+      }
+
+      window.addEventListener('scroll', function () {
+        if (!ticking) {
+          window.requestAnimationFrame(function () {
+            updateParallax();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+
+      window.addEventListener('resize', updateParallax, { passive: true });
+
+      updateParallax();
+    });
+  </script>
+
+
+</head>
+<body>
+ 
+ <div class="parallax-container">
+    <img id="parallax-img" src="image sources/Photoshop border5.png" alt="Dripping Blood">
+  </div>
+
+<!-- FOG LAYERS -->
+<div class="fog-container">
+  <div class="fog-layer fog-layer1"></div>
+  <div class="fog-layer fog-layer2"></div>
+
+</div>
+  <div class="header-content">
+    <h3 class="welcome-text">WELCOME TO</h3>
+    <p class="project-credit">FINAL YEAR PROJECT BY RYAN SIM</p>
+   
+    
+  </div>
+
+<div>
+  <h1>SIM URBAN MYTHS<br>
+  <span style="font-size: 40px;">ARE YOU READY FOR A THRILL?</span>
+  </h1>
+</div>  
+
+<div>
+  <h2><b>Tale of Samuel Shaw</b></h2>
+</div>
+
+
+<div class="story-layout">
+<div class="story-text">
+  <p>
+    In 2010, a student named Samuel Shaw was found dead in one of the old campus bathrooms.
+    Official reports said it was an overdose — methamphetamine. They claimed he was using
+    it to cope with the intense pressure of school, two part-time jobs, and a fractured home life.
+  </p>
+
+  <p>
+    But the story didn’t end there.
+  </p>
+
+  <p>
+    Ever since his death, strange things have been happening in that bathroom. A sharp,
+    bitter chemical smell clings to the air — artificial, burning.
+  </p>
+
+  <p>
+    Then there’s the laughter. Soft. Breathy. Wrong.
+    Not joyful — the sound of someone laughing to themselves in the dark.
+  </p>
+
+  <p>
+    Some say the laughter can be heard from outside, even when the bathroom is empty.
+    If you try to enter, it stops… but not always.
+  </p>
+
+  <p>
+    One janitor reportedly quit mid-shift after unlocking the stall during routine cleaning.
+    They never said what they saw. Just left the keys on the floor and walked out.
+  </p>
+
+  <p>
+    Some believe Samuel’s spirit is trapped. Others think he returned to spread his sorrow.
+    Either way, no one uses that bathroom after sunset.
+  </p>
+
+
+</div>
+<!-- Proof Section -->
+<div class="proof-section" style="margin-top: 150px;">
+
+  <!-- Placeholder for image/video proof -->
+  <div style="width: 80%; max-width: 400px; height: 500px; margin: 0 auto; position: relative; background-color: black; ">
+  <video id="videoProof" style="height: 100%; width: auto; object-fit: contain; display: block; margin: 0 auto;" src="image sources/Toilet Ghost Night Vision test 2 WITH Audio v1.mp4" preload="metadata">
+  </video>
+  <button id="videoPlayPauseBtn" style="
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: black;
+    color: red;
+    font-family: 'Chiller', serif;
+    border: 2px solid red;
+    font-size: 20px;
+    padding: 6px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px red;
+  ">PLAY</button>
+</div>
+<br><br><br>
+  
+  
+ <!-- END story-layout -->
+ <!-- Story Navigation and List -->
+
+<div class="bottom-info" style="text-align: center; margin-top: 50px;">
+  
+  <!-- Different font for story number -->
+  <p style="font-size: 50px; color: red; font-family: 'Chiller', serif;">
+   <b> Story #2 out of 4</b>
+  </p>
+
+    <ul style="list-style: none; padding: 0; font-size: 20px; color: white; font-family: Comic Sans MS;">
+
+    <li>Story #1: Library Got Ghost? – @ Library Block A, Level 2 </li>
+    <li>Story #2: Tale of Samuel Shaw – @ Block A, Level 3 </li>
+    <li>Story #3: Pocong Sighted? – @ Rooftop Blk B, Level 5 </li>
+    <li>Story #4: 7th Month Disappearance – @ Elevator Blk B, Level 4 </li>
+
+  </ul>
+</div>  
+</div>
+
+
+
+<script>
+  const video = document.getElementById('videoProof');
+  const videoPlayPauseBtn = document.getElementById('videoPlayPauseBtn');
+
+  let videoPlaying = false;
+
+  videoPlayPauseBtn.addEventListener('click', () => {
+    if (videoPlaying) {
+      video.pause();
+      videoPlayPauseBtn.textContent = 'PLAY';
+    } else {
+      video.play();
+      videoPlayPauseBtn.textContent = 'PAUSE';
+    }
+    videoPlaying = !videoPlaying;
+  });
+
+  
+</script>
+ <!--  Feedback FORM LINK --!>
+<div style="
+  margin: 80px 0 40px;
+  text-align: center;
+">
+  <a href="#"
+     style="
+       font-family: 'Castellar', serif;
+       font-size: 18px;
+       color: red;
+       text-decoration: none;
+       letter-spacing: 1px;
+     ">
+    FEEDBACK LINK PLACEHOLDER
+  </a>
+</div>
+</body>
+</html>
