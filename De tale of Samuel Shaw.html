@@ -78,9 +78,19 @@
   text-align: left;          /* critical for articles */
 }
 
-.story-text p {
-  margin-bottom: 26px;       /* paragraph breathing room */
-}
+/* === STORY TEXT FADE-IN SEQUENCE === */
+
+.story-text p {  margin-bottom: 26px;   /* paragraph breathing room */  opacity: 0;  animation: fadeIn 1.8s ease forwards;}
+
+/* Staggered delays */
+.story-text p:nth-child(1) { animation-delay: 0.5s; }
+.story-text p:nth-child(2) { animation-delay: 2s; }
+.story-text p:nth-child(3) { animation-delay: 3.5s; }
+.story-text p:nth-child(4) { animation-delay: 5s; }
+.story-text p:nth-child(5) { animation-delay: 6.5s; }
+.story-text p:nth-child(6) { animation-delay: 8s; }
+.story-text p:nth-child(7) { animation-delay: 9.5s; }
+
 
     .header-content { text-align: center;  margin-top: 220px;  opacity: 0;  animation: fadeIn 3s ease 0s 1 normal forwards;  z-index: 2;  position: relative; }
 
@@ -293,6 +303,7 @@
 </body>
 
 </html>
+
 
 
 
