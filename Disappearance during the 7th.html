@@ -119,9 +119,24 @@
 }
 
 #playPauseBtn:hover {  background-color: red;  color: black; box-shadow: 0 0 15px red;  transform: scale(1.05); }
-  </style>
 
+/* === FADE-IN FOR GLITCH STORY === */
+.story-text p {  opacity: 0;   /* start hidden */  animation: fadeIn 2s ease forwards; /* fade animation */ }
 
+/* Staggered delays for each paragraph */
+.story-text p:nth-child(1) { animation-delay: 0.5s; }
+.story-text p:nth-child(2) { animation-delay: 2s; }
+.story-text p:nth-child(3) { animation-delay: 3.5s; }
+.story-text p:nth-child(4) { animation-delay: 5s; }
+.story-text p:nth-child(5) { animation-delay: 6.5s; }
+.story-text p:nth-child(6) { animation-delay: 8s; }
+.story-text p:nth-child(7) { animation-delay: 9.5s; }
+
+/* Keep the glitch effect */
+.story-text {  position: relative;  animation: glitchMain 8s infinite;  animation-delay: 5s;}
+    
+</style>
+  
   <script> <!-- PARALLAX EFFECT FOR IMAGE BRODER--!>
     window.addEventListener('DOMContentLoaded', function () {
       const img = document.getElementById('parallax-img');
@@ -193,28 +208,25 @@
 
 <div>
 <div class="story-text">
-  <p>
-Every year, during the 7th Month, students spread gossip about strange things happening on campus.<br>
-It’s a time when, according to Buddhism, the gates between Heaven and Hell are open for spirits to return to the land of the living.
+  <p>Every year, during the 7th Month, students spread gossip about strange things happening on campus. 
+    It’s a time when, according to Buddhism, the gates between Heaven and Hell are open for spirits to return to the land of the living.</p>
 
-One of the many superstitions and beliefs goes: Don’t stay out too late, or a spirit might get drawn to you.<br>
-<br>
-Well, in 2009, one student should have heeded that advice... He was last seen walking down a quiet corridor and descending the staircase, but he never reached the bottom.
+  <p>One of the many superstitions and beliefs goes: Don’t stay out too late, or a spirit might get drawn to you.</p>
 
-Some say he was taken by the spirits, drawn in by the late hour. Others claim they heard footsteps echoing behind him, yet when they turned around, 
-the hallway was empty and still.<br>
-<br> The air had turned unnaturally cold that night, and one student even reported hearing a faint murmur, as if a spirit was calling out the boy’s name.
+  <p>Well, in 2009, one student should have heeded that advice... He was last seen walking down a quiet corridor and descending the staircase, but he never reached the bottom.</p>
 
-The police found no clues, nor answers, and some say his living family are still looking for him to this day...<br>
+  <p>Some say he was taken by the spirits, drawn in by the late hour. Others claim they heard footsteps echoing behind him, yet when they turned around, the hallway was empty and still.</p>
 
-<br>But the stories have spread. Some students say it’s just a coincidence that the guy went missing, while others whisper that the spirits of the 7th Month are still walking among us—
-hovering just beyond our sight, watching, waiting.
-And every year, when the 7th Month rolls around, students avoid staying out too late...Sjust in case.
+  <p>The air had turned unnaturally cold that night, and one student even reported hearing a faint murmur, as if a spirit was calling out the boy’s name.</p>
+
+  <p>The police found no clues, nor answers, and some say his living family are still looking for him to this day...</p>
+
+  <p>But the stories have spread. Some students say it’s just a coincidence that the guy went missing, while others whisper that the spirits of the 7th Month are still walking among us
+    - hovering just beyond our sight, watching, waiting. And every year, when the 7th Month rolls around, students avoid staying out too late... just in case.</p>
 
 
-
-
-</div>
+</div>  <!-- closes story-text -->
+  
 <!-- Proof Section -->
 <div class="proof-section" style="margin-top: 150px;">
 
@@ -304,6 +316,7 @@ And every year, when the 7th Month rolls around, students avoid staying out too 
 </body>
 
 </html>
+
 
 
 
